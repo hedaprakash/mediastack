@@ -1,0 +1,50 @@
+#cloud-config
+#https://bugs.launchpad.net/cloud-init/+bug/1960360
+hostname: testservername
+manage_etc_hosts: localhost
+user: hvadmin
+password: Password1Test#
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDADfi8MarFujzVasMzlcFmebghmOUeGfTYnSWXZnxk9R6B/z5wKkVemnS9NaM7Cy5zh5DwwyK/Eb/Xow5r8ByDvMhSZAsAN2ZmGD32SD+amTpYLMaiscF+/ZZwyRnAX9vABxg7ny2zTzaYftqRrSWSzH3Q011WBt+MuiHF36bTJ6vbTc7oa0Lb6p7wg01yCDDmTilf6MtK52ypOCaGr2hK0cCBwlUjgzJXZpzFq6R414tRmABZpbZp3YaKLuTRm1DgxVBU4JjxB53+d4MQc48ZdnCTUK9h4txZAZUlnc7ziJkXaIV3T1HahkWSwb/zJqoXRKZtMEsHS7SR0Zjt0favsqcfM8g012pZ3BQAf8hcqnznPxQyw+jgEL4SUDkFXYFJaidrN9YzShLYWJxD8uPXcGdhq5MS6hlSGH4Tt7fWm36PGfGcLYuTQdAud/0AE9eQ6mLjB2NaeygPM3NOeJbv4J+SZdX1z8FSYFzx4pf+VMjnGUEkrn4wBMphtt109Ys= hvadmin@w11rzen
+chpasswd:
+  expire: False
+#Packages to install
+packages:
+  - qemu-guest-agent
+#Packages and update configuration
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+#Set locale and timezone
+locale: en_US
+timezone: America/Los_Angeles
+#Setup NTP server
+# ntp:
+#   enabled: true
+#   ntp_client: ntp
+#   servers:
+#     - sth1.ntp.se
+#     - sth2.ntp.se
+#     - sth3.ntp.se
+#     - sth4.ntp.se
+#Setup apt source
+apt:
+  primary:
+    - arches: [amd64]
+      uri: http://se.archive.ubuntu.com/ubuntu/
+write_files:
+- content: |
+    sshd : 10.10.50.182
+  path: /etc/hosts.allow
+  append: True
+- content: |
+    #Custom SSH configuration
+    Protocol 2
+  path: /etc/ssh/sshd_config.d/custom
+  permissions: '0600'
+  owner: root:root
+power_state:
+  delay: "+1"
+  mode: poweroff
+  timeout: 120
+  condition: True
