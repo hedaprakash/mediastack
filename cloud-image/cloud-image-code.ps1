@@ -1,13 +1,16 @@
-#Download image from:
-https://cloud-images.ubuntu.com/
 # documentation
 https://cloudinit.readthedocs.io/en/latest/topics/modules.html
 
-# images
+#Download image from:
+https://cloud-images.ubuntu.com/
 https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
 https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.img
 https://cloud-images.ubuntu.com/lunar/current/kinetic-server-cloudimg-amd64.img
 
+
+mkdir c:\virtualization\cloud-init 
+cd  c:\virtualization\cloud-init 
+git clone https://github.com/hedaprakash/mediastack.git
 
 ssh root@10.10.50.101
 
@@ -21,10 +24,10 @@ mkdir ~/cloud-init
 cd ~/cloud-init
 
 qm stop 9600 && qm destroy 9600
-# wget https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.img
+wget https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.img
 qm create 9600 --name "ubuntu-cloud-2210" --memory 4096 --cores 2 --net0 virtio,bridge=vmbr0
-qm importdisk 9600 /mnt/pve/isos2/template/iso/kinetic-server-cloudimg-amd64.img local-lvm
-# qm importdisk 9600 /root/cloud-init/kinetic-server-cloudimg-amd64.img
+#qm importdisk 9600 /mnt/pve/isos2/template/iso/kinetic-server-cloudimg-amd64.img local-lvm
+qm importdisk 9600 /root/cloud-init/kinetic-server-cloudimg-amd64.img
 qm set 9600 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9600-disk-0
 qm set 9600 --ide2 local-lvm:cloudinit --boot c --bootdisk scsi0 --serial0 socket --vga serial0
 qm resize 9600 scsi0 +20G
@@ -43,7 +46,7 @@ qm cloudinit dump 9600 user
 
 Exit
 
-scp F:/presentation/ep37_cloud-image/proxmox/cloud-image/ubuntu/userconfig.yaml root@10.10.50.101:/var/lib/vz/snippets/
+scp C:/virtualization/cloud-init/mediastack/cloud-image/ubuntu/userconfig.yaml root@10.10.50.101:/var/lib/vz/snippets/
 ssh root@10.10.50.101 "cat /var/lib/vz/snippets/userconfig.yaml"
 
 
