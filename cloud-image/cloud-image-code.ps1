@@ -23,24 +23,23 @@ apt install libguestfs-tools -y
 mkdir ~/cloud-init 
 cd ~/cloud-init
 
-qm stop 9600 && qm destroy 9600
+qm stop 9601 && qm destroy 9601
 wget https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.img
-qm create 9600 --name "ubuntu-cloud-2210" --memory 4096 --cores 2 --net0 virtio,bridge=vmbr0
-#qm importdisk 9600 /mnt/pve/isos2/template/iso/kinetic-server-cloudimg-amd64.img local-lvm
-qm importdisk 9600 /root/cloud-init/kinetic-server-cloudimg-amd64.img
-qm set 9600 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9600-disk-0
-qm set 9600 --ide2 local-lvm:cloudinit --boot c --bootdisk scsi0 --serial0 socket --vga serial0
-qm resize 9600 scsi0 +20G
-qm set 9600 --serial0 socket --vga serial0
-qm set 9600 --agent enabled=1
-qm set 9600 --ciuser=hvadmin --cipassword=Password1Test#
-qm set 9600 --sshkey /root/.ssh/id_rsa.pub
-qm set 9600 --ipconfig0 ip=dhcp
-#qm set 9600 --ipconfig0 ip=10.10.50.222/24,gw=10.10.50.1
-qm template 9600
+qm create 9601 --name "ubuntu-cloud-21" --memory 4096 --cores 2 --net0 virtio,bridge=vmbr0
+#qm importdisk 9601 /mnt/pve/isos2/template/iso/kinetic-server-cloudimg-amd64.img local-lvm
+qm importdisk 9601 /root/cloud-init/kinetic-server-cloudimg-amd64.img local-lvm
+qm set 9601 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9601-disk-0
+qm set 9601 --ide2 local-lvm:cloudinit --boot c --bootdisk scsi0 
+qm resize 9601 scsi0 +20G
+qm set 9601 --serial0 socket --vga serial0
+qm set 9601 --agent enabled=1
+qm set 9601 --ciuser=superadmin --cipassword=Password1Test#
+qm set 9601 --ipconfig0 ip=dhcp
+#qm set 9601 --ipconfig0 ip=10.10.50.222/24,gw=10.10.50.1
+qm template 9601
 
 # verify config
-qm cloudinit dump 9600 user
+qm cloudinit dump 9601 user
 
 #test init
 
@@ -49,19 +48,20 @@ Exit
 scp C:/virtualization/cloud-init/mediastack/cloud-image/userconfig.yaml root@10.10.50.101:/var/lib/vz/snippets/
 ssh root@10.10.50.101 "cat /var/lib/vz/snippets/userconfig.yaml"
 
+ssh root@10.10.50.101
 
-qm stop 666 && qm destroy 666
-qm clone 9600 666 --name vmediastack --full
+qm stop 777 && qm destroy 777
+qm clone 9601 777 --name vmediastack --full
 sed -i "s/testservername/vmediastack/g" /var/lib/vz/snippets/userconfig.yaml
 sed -i "s/superadmin/hvadmin/g" /var/lib/vz/snippets/userconfig.yaml
 cat /var/lib/vz/snippets/userconfig.yaml
-qm set 666 --cicustom "user=local:snippets/userconfig.yaml"
-#qm set 666 --sshkey ~/gitwork/ssh/id_rsa.pub
-qm set 666  --ipconfig0 ip=10.10.50.232/24,gw=10.10.50.1
-qm start 666  && qm wait 666
-
+qm set 777 --cicustom "user=local:snippets/userconfig.yaml"
+qm set 777 --sshkey /root/.ssh/id_rsa.pub
+qm set 777  --ipconfig0 ip=10.10.50.232/24,gw=10.10.50.1
+# qm cloudinit dump 777 user
+qm start 777  && qm wait 777
+qm start 777 
 
 ssh hvadmin@10.10.50.232
 
 hostname
-
