@@ -35,7 +35,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 docker --version
 
-# run docker withoiut sudo on ubuntu
+# run docker without sudo on ubuntu
 # https://docs.docker.com/engine/install/linux-postinstall/
 #sudo groupadd docker
 #newgrp docker
