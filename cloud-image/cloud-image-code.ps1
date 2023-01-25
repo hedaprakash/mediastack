@@ -43,7 +43,7 @@ qm cloudinit dump 9601 user
 
 #test init
 
-Exit
+exit
 
 scp C:/virtualization/cloud-init/mediastack/cloud-image/userconfig.yaml root@10.10.50.101:/var/lib/vz/snippets/
 ssh root@10.10.50.101 "cat /var/lib/vz/snippets/userconfig.yaml"
@@ -56,7 +56,7 @@ sed -i "s/testservername/vmediastack/g" /var/lib/vz/snippets/userconfig.yaml
 sed -i "s/superadmin/hvadmin/g" /var/lib/vz/snippets/userconfig.yaml
 cat /var/lib/vz/snippets/userconfig.yaml
 qm set 777 --cicustom "user=local:snippets/userconfig.yaml"
-qm set 777 --sshkey /root/.ssh/id_rsa.pub
+#qm set 777 --sshkey /root/.ssh/id_rsa.pub
 qm set 777  --ipconfig0 ip=10.10.50.232/24,gw=10.10.50.1
 # qm cloudinit dump 777 user
 qm start 777  && qm wait 777
