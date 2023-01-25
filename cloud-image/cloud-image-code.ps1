@@ -24,10 +24,10 @@ mkdir ~/cloud-init
 cd ~/cloud-init
 
 qm stop 9601 && qm destroy 9601
-wget https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.img
+wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
 qm create 9601 --name "ubuntu-cloud-21" --memory 4096 --cores 2 --net0 virtio,bridge=vmbr0
 #qm importdisk 9601 /mnt/pve/isos2/template/iso/kinetic-server-cloudimg-amd64.img local-lvm
-qm importdisk 9601 /root/cloud-init/kinetic-server-cloudimg-amd64.img local-lvm
+qm importdisk 9601 /root/cloud-init/jammy-server-cloudimg-amd64.img local-lvm
 qm set 9601 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9601-disk-0
 qm set 9601 --ide2 local-lvm:cloudinit --boot c --bootdisk scsi0 
 qm resize 9601 scsi0 +20G
@@ -65,3 +65,6 @@ qm start 777
 ssh hvadmin@10.10.50.232
 
 hostname
+
+
+
