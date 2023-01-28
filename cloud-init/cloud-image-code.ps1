@@ -44,7 +44,7 @@ qm cloudinit dump 9601 user
 
 exit
 
-scp C:/virtualization/cloud-init//userconfig.yaml root@10.10.50.101:/var/lib/vz/snippets/
+scp C:/virtualization/mediastack/cloud-init//userconfig.yaml root@10.10.50.101:/var/lib/vz/snippets/
 ssh root@10.10.50.101 "cat /var/lib/vz/snippets/userconfig.yaml"
 
 ssh root@10.10.50.101
