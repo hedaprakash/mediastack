@@ -8,8 +8,8 @@ https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.im
 https://cloud-images.ubuntu.com/lunar/current/kinetic-server-cloudimg-amd64.img
 
 
-mkdir c:\virtualization\cloud-init 
-cd  c:\virtualization\cloud-init 
+mkdir c:\virtualization
+cd  c:\virtualization
 git clone https://github.com/hedaprakash/mediastack.git
 
 ssh root@10.10.50.101
@@ -44,7 +44,7 @@ qm cloudinit dump 9601 user
 
 exit
 
-scp C:/virtualization/cloud-init/mediastack/cloud-image/userconfig.yaml root@10.10.50.101:/var/lib/vz/snippets/
+scp C:/virtualization/cloud-init//userconfig.yaml root@10.10.50.101:/var/lib/vz/snippets/
 ssh root@10.10.50.101 "cat /var/lib/vz/snippets/userconfig.yaml"
 
 ssh root@10.10.50.101
