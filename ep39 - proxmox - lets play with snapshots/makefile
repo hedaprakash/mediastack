@@ -26,7 +26,6 @@ EOF
 cat  ~/test22
 cd ..
 ls -ltr 
-ssh hvadmin@10.10.50.232
 docker images
 docker ps -a
 docker stop a9c95ab55880
@@ -36,13 +35,16 @@ docker images
 exit
 
 # rollback snapshot
-qm rollback 777 pre-media-stack $$ qm 777 wait
-
+qm listsnapshot 777
+qm rollback 777 pre-media-stack 
+qm start 777
 
 # lets test live 
 qm listsnapshot 777
 ssh hvadmin@10.10.50.232
 ls
+docker images
+docker ps -a
 exit
 
 qm listsnapshot 777
@@ -67,6 +69,7 @@ exit
 
 qm listsnapshot 777
 qm delsnapshot 777 pre-media-stack
+qm listsnapshot 777
 qm snapshot 777 post-image-download
 ssh hvadmin@10.10.50.232
 docker ps -a 
