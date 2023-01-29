@@ -63,3 +63,11 @@ Radarr: http://10.10.50.232:7878/ hvadmin Password1Test#
 Jellyfin: http://10.10.50.232:8096  hvadmin Password1Test#
 
 APi Keys for Sonarr, Radarr & Jellyfin
+
+ssh root@10.10.50.101
+qm listsnapshot 777
+qm delsnapshot 777 post-homepage-image
+qm listsnapshot 777
+qm snapshot 777 post-homepage
+qm start 777
+
