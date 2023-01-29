@@ -13,7 +13,7 @@ gci
 ssh root@10.10.50.101
 # rollback snapshot
 # qm listsnapshot 777
-# qm stop 777
+# qm shutdown 777
 # qm rollback 777  post-image-download 
 # qm start 777
 
@@ -21,6 +21,7 @@ qm listsnapshot 777
 qm delsnapshot 777 post-image-download
 qm listsnapshot 777
 qm snapshot 777 post-image-download
+qm start 777
 exit
 
 ssh hvadmin@10.10.50.232
@@ -29,11 +30,13 @@ docker images
 docker ps 
 ls
 exit
+exit
 
 ssh hvadmin@10.10.50.232 "mkdir ~/media-stack"
 scp C:\virtualization\mediastack\ep40-media-stack\docker-compose.yml hvadmin@10.10.50.232:~/media-stack
 ssh hvadmin@10.10.50.232 "ls  ~/media-stack/"
 ssh hvadmin@10.10.50.232 "cat  ~/media-stack/docker-compose.yml"
+
 
 ssh hvadmin@10.10.50.232
 ls  /nfsdocker
@@ -74,11 +77,6 @@ Scroll to down and set admin password.
 Configure Transmission:
 Open Transmission in browser using ip address or domain of server ip-address-or-domain:9091 and 
 check if UI is accessible.
-
-#2. In backend, Get inside transmission container and run below commands.
-docker exec -it transmission bash # Get inside transmission container
-mkdir /downloads/movies /downloads/tvshows
-# not needed chown 50000:3000 /downloads/movies /downloads/tvshows
 
 
 #Logoin to radaar 
@@ -122,7 +120,6 @@ Download Client > Your torrent client! >
 The rest is up to you > Test > Save
 
 
-
 Configure Jellyfin:
 Open Jellyfin in browser using ip address or domain name of server ip-address-or-domain:8096. 
 Make sure firewall rule allows this port.
@@ -136,13 +133,4 @@ Add another media library for TV Shows and select /tvshows folder.
 Create new non-admin user. Dashboard --> Users --> Add user (+) --> Add username and password --> Choose libraries to give access --> Save.
 You can download jellyfin client for mobile or desktop for streaming media. Or you can also use browser.
 
-
-docker stop radarr
-docker rm radarr
-docker logs radarr
-docker exec -it radarr bash
-docker exec -it transmission bash
-docker logs transmission 
-chown :group1 file1.txt
-chown abc aa
 

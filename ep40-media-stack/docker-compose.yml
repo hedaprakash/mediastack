@@ -84,7 +84,6 @@ services:
       - TZ=America/Los_Angeles
     volumes:
       - /nfsdocker/jellyfin/config:/config
-      - /tordown/transmission:/data
       - /movies/newmovdown:/movies
       - /tvshows/newtvdown:/tvshows
   # devices:
