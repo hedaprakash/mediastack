@@ -136,23 +136,13 @@ Add another media library for TV Shows and select /tvshows folder.
 Create new non-admin user. Dashboard --> Users --> Add user (+) --> Add username and password --> Choose libraries to give access --> Save.
 You can download jellyfin client for mobile or desktop for streaming media. Or you can also use browser.
 
+
 docker stop radarr
 docker rm radarr
 docker logs radarr
 docker exec -it radarr bash
-docker compose -f ~/media-stack/docker-compose.yml  up -d  --build  radarr
-docker compose -f ~/media-stack/docker-compose.yml  up -d 
-docker compose -f ~/media-stack/docker-compose.yml  down 
-docker compose -f ~/media-stack/docker-compose.yml down --rebuild  radarr
-
 docker exec -it transmission bash
 docker logs transmission 
 chown :group1 file1.txt
 chown abc aa
-
-sudo chown 1000 /movies/newmovdown
-sudo chown :1000 /movies/newmovdown
-sudo chown 1000 /tvshows/newtvdown
-sudo chown :1000 /tvshows/newtvdown
-
 
