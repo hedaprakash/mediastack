@@ -1,0 +1,100 @@
+version: "3.9"
+name: media-stack
+services:
+  transmission:
+    container_name: transmission
+    image: linuxserver/transmission:latest
+    networks:
+      - mynetwork
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - USER=hvadmin
+      - PASS=Password1Test# 
+    ports:
+      - 9091:9091 
+      - 51413:51413
+      - 51413:51413/udp
+    volumes:
+      - /nfsdocker/transmission/config:/config
+      - /nfsdocker/transmission/tx-watch:/watch
+      - /tordown/transmission:/downloads
+      - /movies/newmovdown:/movies
+      - /tvshows/newtvdown:/tvshows
+
+  radarr:
+    container_name: radarr
+    image: linuxserver/radarr:latest
+    networks:
+      - mynetwork
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    ports:
+      - 7878:7878
+    volumes:
+      - /nfsdocker/radarr/config:/config
+      - /tordown/transmission:/downloads
+      - /movies/newmovdown:/movies
+    restart: "unless-stopped"
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    container_name: sonarr
+    networks:
+      - mynetwork
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /nfsdocker/sonarr/config:/config
+      - /tvshows/newtvdown:/tvshows
+      - /tordown/transmission:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  jackett:
+    container_name: jackett
+    image: linuxserver/jackett:latest
+    networks:
+      - mynetwork
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /nfsdocker/jackett/config:/config
+      - /nfsdocker/jackett/blackhole:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+  jellyfin:
+    image: linuxserver/jellyfin:latest
+    container_name: jellyfin
+    networks:
+      - mynetwork
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /nfsdocker/jellyfin/config:/config
+      - /tordown/transmission:/data
+      - /movies/newmovdown:/movies
+      - /tvshows/newtvdown:/tvshows
+  # devices:
+   #  - /dev/videoN:/dev/videoN # Mount GPU device 
+    ports:
+      - 8096:8096
+      - 7359:7359/udp
+      - 8920:8920
+    restart: unless-stopped
+
+networks:
+  mynetwork:
+    external: true
