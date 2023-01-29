@@ -1,0 +1,48 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/services
+
+- Website:
+    - GoogleNews:
+        href: https://news.google.com/home?hl=en-US&gl=US&ceid=US%3Aen
+    - Gmail:
+        href: https://mail.google.com/mail/u/0/#inbox
+
+
+- Media:
+    - jellyfin:
+        icon: jellyfin
+        href: http://10.10.50.232:8096
+        ping: http://10.10.50.232:8096   
+        widget:
+            type: jellyfin
+            url: http://10.10.50.232:8096
+            key: 
+    - Radarr:
+        icon: radarr.png
+        href: http://10.10.50.232:7878
+        ping: http://10.10.50.232:7878  
+        widget:
+          type: radarr
+          fields: ["wanted", "queued"]
+          url: http://10.10.50.232:7878 
+          key: 
+    - Sonarr:
+        icon: sonarr.png
+        href: http://10.10.50.232:8989/
+        ping: http://10.10.50.232:8989/  
+        widget:
+          type: sonarr
+          fields: ["wanted", "queued"]
+          url: http://10.10.50.232:8989/ 
+          key: 
+        server: 10.10.50.232
+        container: sonarr
+    - transmission:
+        icon: transmission.png
+        href: http://10.10.50.232:9091
+        ping: http://10.10.50.232:9091
+    - Jackett:
+        icon: mdi-flask-outline
+        href: http://10.10.50.232:9117/UI/Dashboard
+        ping: http://10.10.50.232:9117

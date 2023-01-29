@@ -1,0 +1,22 @@
+version: "3.9"
+name: homepage
+services:
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: homepage
+    networks:
+      - mynetwork
+    ports:
+      - 3000:3000
+    volumes:
+      - /nfsdocker/homepage/config:/app/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    restart: "unless-stopped"
+
+networks:
+  mynetwork:
+    external: true

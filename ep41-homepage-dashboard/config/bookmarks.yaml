@@ -1,0 +1,22 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/bookmarks
+
+- Developer:
+    - Github:
+        - abbr: G
+          href: https://github.com/hedaprakash?tab=repositories
+- Social:
+    - Blog:
+        - abbr: B
+          href: https://www.sqlfeatures.com/
+    - Photography:
+        - abbr: P
+          href: https://www.starinnovative.com/
+- Youtube:
+    - YouTube:
+        - abbr: S
+          href: https://www.youtube.com/user/sqlfeatures
+    - YouTube:
+        - abbr: T
+          href: https://www.youtube.com/channel/UCxvbgu3lWkYSGb6iGrHjXwQ
