@@ -2,9 +2,12 @@ ls
 cd c:\virtualization
 # git clone hedaprakash/mediastack
 git clone https://github.com/hedaprakash/mediastack.git
-# git pull origin main
 cd mediastack
 gci
+# Refresh existing clone
+# cd C:\virtualization\mediastack
+# git pull origin main
+# gci ep40-media-stack  
 
 # Proxmox Snapshot
 ssh root@10.10.50.101

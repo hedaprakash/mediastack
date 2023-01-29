@@ -10,7 +10,14 @@ https://cloud-images.ubuntu.com/lunar/current/kinetic-server-cloudimg-amd64.img
 
 mkdir c:\virtualization
 cd  c:\virtualization
+# git clone hedaprakash/mediastack
 git clone https://github.com/hedaprakash/mediastack.git
+cd mediastack
+gci 
+# Refresh existing clone
+# cd C:\virtualization\mediastack
+# git pull origin main
+# gci ep40-media-stack  
 
 ssh root@10.10.50.101
 
