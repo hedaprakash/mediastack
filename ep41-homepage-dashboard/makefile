@@ -35,7 +35,6 @@ scp C:\virtualization\mediastack\ep41-homepage-dashboard\docker-compose.yml hvad
 ssh hvadmin@10.10.50.232 "cat  ~/homepage/docker-compose.yml"
 
 ssh hvadmin@10.10.50.232
-docker pull ghcr.io/benphelps/homepage:latest
 sudo mkdir -p /nfsdocker/homepage/config
 docker ps 
 docker compose -f ~/homepage/docker-compose.yml up -d 
@@ -48,6 +47,7 @@ ls -l /nfsdocker/homepage/config/
 ls -l /nfsdocker/homepage/config/logs
 cat /nfsdocker/homepage/config/logs/homepage.log
 cat /nfsdocker/homepage/config/bookmarks.yaml
+
 # open another terminal window 
 scp C:\virtualization\mediastack\ep41-homepage-dashboard\config\bookmarks.yaml hvadmin@10.10.50.232:/nfsdocker/homepage/config
 
