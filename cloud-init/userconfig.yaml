@@ -7,7 +7,7 @@ password: Password1Test#
 chpasswd:
   expire: False
 ssh_authorized_keys:
-  - ssh-rsa AAAAB3NzaC1yc2sfgdsfgdfgsdfgsdfgsdfgsdfgdfgdfEAAAADdfgdfgdfgdfjzVasMzlcFmebghmOUeGfTYnSWXZnxk9R6B/z5wKkVemnS9NaM7Cy5zh5DwwyK/Eb/Xow5r8ByDvMhSZAsAN2ZmGD32SD+amTpYLMaiscF+/ZZwyRnAX9vABxg7ny2zTzaYftqRrSWSzH3Q011WBt+MuiHF36bTJ6vbTc7oa0Lb6p7wg01yCDDmTilf6MtK52ypOCaGr2hK0cCBwlUjgzJXZpzFq6R414tRmABZpbZp3YaKLuTRm1DgxVBU4JjxB53+d4MQc48ZdnCTUK9h4txZAZUlnc7ziJkXaIV3T1HahkWSwb/zJqoXRKZtMEsHS7SR0Zjt0favsqcfM8g012pZ3BQAf8hcqnznPxQyw+jgEL4SUDkFXYFJaidrN9YzShLYWJxD8uPXcGdhq5MS6hlSGH4Tt7fWm36PGfGcLYuTQdAud/0AE9eQ6mLjB2NaeygPM3NOeJbv4J+SZdX1z8FSYFzx4pf+VMjnGUEkrn4wBMphtt109Ys= hvadmin@w11rzen
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDADfi8MarFujzVasMzlcFmebghmOUeGfTYnSWXZnxk9R6B/z5wKkVemnS9NaM7Cy5zh5DwwyK/Eb/Xow5r8ByDvMhSZAsAN2ZmGD32SD+amTpYLMaiscF+/ZZwyRnAX9vABxg7ny2zTzaYftqRrSWSzH3Q011WBt+MuiHF36bTJ6vbTc7oa0Lb6p7wg01yCDDmTilf6MtK52ypOCaGr2hK0cCBwlUjgzJXZpzFq6R414tRmABZpbZp3YaKLuTRm1DgxVBU4JjxB53+d4MQc48ZdnCTUK9h4txZAZUlnc7ziJkXaIV3T1HahkWSwb/zJqoXRKZtMEsHS7SR0Zjt0favsqcfM8g012pZ3BQAf8hcqnznPxQyw+jgEL4SUDkFXYFJaidrN9YzShLYWJxD8uPXcGdhq5MS6hlSGH4Tt7fWm36PGfGcLYuTQdAud/0AE9eQ6mLjB2NaeygPM3NOeJbv4J+SZdX1z8FSYFzx4pf+VMjnGUEkrn4wBMphtt109Ys= hvadmin@w11rzen
 #Packages to install
 packages:
   - qemu-guest-agent
@@ -34,7 +34,7 @@ apt:
       uri: http://se.archive.ubuntu.com/ubuntu/
 write_files:
 - content: |
-    sshd : 10.10.50.182
+    sshd : 10.10.50.183
   path: /etc/hosts.allow
   append: True
 - content: |
