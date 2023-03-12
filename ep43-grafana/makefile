@@ -16,8 +16,11 @@ exit
 # Proxmox Snapshot
 ssh root@10.10.50.101
 qm listsnapshot 789
+# qm rollback 789 post-sql
 qm delsnapshot 789 pre-sql
 qm snapshot 789 post-sql
+# qm start 789
+# qm status 789
 exit
 
 ssh hvadmin@10.10.50.233
@@ -30,8 +33,8 @@ scp C:\virtualization\mediastack\ep43-grafana\docker-compose.yml hvadmin@10.10.5
 ssh hvadmin@10.10.50.233 "cat  ~/sql-server/docker-compose.yml"
 
 ssh hvadmin@10.10.50.233
-ls /nfsdocker/grafana
-sudo mkdir -p  /nfsdocker/grafana
+#ls /nfsdocker/grafana
+#sudo mkdir -p  /nfsdocker/grafana
 
 #docker volumes
 docker volume ls
@@ -56,8 +59,8 @@ exit
 
 ssh root@10.10.50.101
 qm listsnapshot 789
-qm delsnapshot 789 pre-sql-server
+qm delsnapshot 789 post-sql 
 qm listsnapshot 789
-qm snapshot 789 post-sql-server
+qm snapshot 789 post-grafana-sql
 qm start 789
 
