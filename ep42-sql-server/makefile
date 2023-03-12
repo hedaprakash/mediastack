@@ -26,18 +26,10 @@ qm set 789  --ipconfig0 ip=10.10.50.233/24,gw=10.10.50.1
 qm start 789  && qm wait 789
 qm start 789 
 
-ssh hvadmin@10.10.50.233
-
-hostname
-
-
-
-
 # Proxmox Snapshot
 ssh root@10.10.50.101
-# rollback snapshot
-# qm listsnapshot 789
-# qm snapshot 789 pre-docker
+qm listsnapshot 789
+qm snapshot 789 pre-docker
 # qm shutdown 789
 # qm rollback 789 pre-docker
 # qm start 789
@@ -87,12 +79,12 @@ docker --version
 #sudo groupadd docker
 #newgrp docker
 sudo usermod -aG docker $USER
-su - $USER
 #reboot is must
 sudo reboot
 
 
 ssh hvadmin@10.10.50.233
+docker ps -a
 docker pull mcr.microsoft.com/mssql/server:2022-latest
 exit
 
@@ -122,12 +114,12 @@ docker volume ls
 #docker stop $(docker ps -a -q)
 #docker rm $(docker ps -a -q)
 
-sudo ls /nfsdocker/
-sudo mkdir -p /nfsdocker/sql-server/config
+#sudo ls /nfsdocker/
+#sudo mkdir -p /nfsdocker/sql-server/config
 docker ps -a
 docker network create mynetwork
 docker compose -f ~/sql-server/docker-compose.yml up -d 
-docker compose -f ~/sql-server/docker-compose.yml down 
+# docker compose -f ~/sql-server/docker-compose.yml down 
 docker ps 
 
 docker logs sql1
