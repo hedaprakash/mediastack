@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - "5500:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - sql
+    networks:
+      - mynetwork
+    restart: "unless-stopped"
+
+  sql:
+      image: "mcr.microsoft.com/mssql/server:2022-latest"
+      container_name: sql1
+      ports:
+        - "1433:1433"
+      environment:
+          SA_PASSWORD: "Password1Test#"
+          ACCEPT_EULA: "Y"
+      networks:
+        - mynetwork
+      restart: "unless-stopped"
+
+networks:
+  mynetwork:
+    external: true
+
+volumes:
+  grafana-data:
+    driver: local
