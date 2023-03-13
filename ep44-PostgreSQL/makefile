@@ -9,6 +9,13 @@ gci
 # git pull origin main
 # gci ep43-grafana
 
+#Agenda
+#1. setup host names for quick remote commands execution
+#2. Review Docker compose   
+#3. Create postgres/adminer/pgadmin4 containers
+#4. Tested postgres connectivity 
+
+
 cat "C:\Users\hvadmin\.ssh\config"
 Host vmcontainer
     HostName 10.10.50.233
@@ -33,8 +40,8 @@ ssh proxmox "qm status 789"
 
 # ssh vmcontainer "sudo rm -rf /nfsdocker/postgres"
 ssh vmcontainer "docker ps -a"
-ssh vmcontainer "sudo rm -rf /nfsdocker/postgres"
-ssh vmcontainer "sudo mkdir -p /nfsdocker/postgres/data"
+ssh vmcontainer "sudo rm -rf /home/hvadmin/psdata"
+ssh vmcontainer "sudo mkdir -p /home/hvadmin/psdata"
 ssh vmcontainer "docker pull postgres:latest"
 ssh vmcontainer "docker pull adminer:latest"
 ssh vmcontainer "docker pull dpage/pgadmin4:latest"
@@ -78,12 +85,12 @@ select * from tbl1;
 
 exit 
 exit 
-# Visit the adminor Web Interface `http://10.10.50.233:10000/`, and login with database 
-# Visit the pgadmin Web Interface `http://10.10.50.233:5050/`, and login with database 
 exit
+# Visit the adminer Web Interface `http://10.10.50.233:10000/`, and login with database 
+# Visit the pgadmin4 Web Interface `http://10.10.50.233:5050/`, and login with database 
 
 ssh proxmox "qm listsnapshot 789"
 ssh proxmox "qm snapshot 789 post-postgres"
 ssh proxmox "qm delsnapshot 789 pre-postgres" 
 ssh proxmox "qm delsnapshot 789 post-grafana-sql"
-ssh proxmox "qm start 789"
+# ssh proxmox "qm start 789"
