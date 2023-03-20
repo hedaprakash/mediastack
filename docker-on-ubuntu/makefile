@@ -1,5 +1,5 @@
 ssh hvadmin@10.10.50.232
-
+# wsl
 #Update 
 sudo apt update
 sudo apt list --upgradable
@@ -29,9 +29,7 @@ sudo apt-get update
 
 
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
-
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 
 docker --version
 
@@ -48,3 +46,4 @@ ssh hvadmin@10.10.50.232
 
 docker run hello-world
 
+# sudo service docker start
