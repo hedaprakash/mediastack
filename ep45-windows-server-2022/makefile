@@ -144,7 +144,8 @@ docker image inspect grafana/grafana-oss:9.2.15
 cd /mnt/c/virtualization/mediastack/ep45-windows-server-2022
 docker compose -f docker-compose.yml up -d 
 # docker compose -f docker-compose.yml down
-
+# docker compose -f docker-compose.yml up -d sql
+# docker compose logs
 # cd /mnt/c/virtualization/mediastack/ep42-sql-server
 # docker compose -f docker-compose.yml up -d 
 # docker compose -f docker-compose-grafana.yml up -d 
@@ -152,7 +153,16 @@ docker compose -f docker-compose.yml up -d
 # docker compose -f docker-compose-grafana1.yml up -d 
 # docker compose -f docker-compose-grafana1.yml down
 docker logs sql1
+docker rm sql1
+docker rm -f < Container_ID>
+docker ps -a 
+docker system prune --all
+docker system prune -a --containers
+docker system prune --help
 
+docker container prune -f
+
+docker system info
 docker exec -t sql1 cat /var/opt/mssql/log/errorlog | grep connection
 
 sudo docker exec -it sql1 "bash"
