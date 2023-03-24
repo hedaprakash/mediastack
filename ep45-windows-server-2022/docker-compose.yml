@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   grafana:
-    image: grafana/grafana-oss:8.2.6
+    image: grafana/grafana-oss:9.2.15
     container_name: grafana
     ports:
       - "5500:3000"

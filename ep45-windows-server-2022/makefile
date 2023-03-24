@@ -116,13 +116,14 @@ sudo service docker start
 docker ps -a
 docker network create mynetwork
 docker images --all
-docker images grafana/grafana
-docker image rm  grafana/grafana-oss
-docker images   grafana/grafana-oss
+#docker images grafana/grafana
+#docker image rm  grafana/grafana-oss:8.3.0-beta2
+#docker images   grafana/grafana-oss
+#docker image inspect grafana/grafana-oss
 
 docker image history mcr.microsoft.com/mssql/server:2022-latest
 docker image inspect mcr.microsoft.com/mssql/server:2022-latest
-docker image inspect grafana/grafana:8.3.0-beta2
+docker image inspect grafana/grafana-oss:9.2.15
 docker pull grafana/grafana:8.3.0-beta2
 docker run -d --name=grafana -p 3000:3000 grafana/grafana
 docker ps -a 
@@ -130,14 +131,16 @@ docker pull postgres:latest
 docker pull adminer:latest
 docker pull dpage/pgadmin4:latest
 docker pull mcr.microsoft.com/mssql/server:2022-latest
-docker pull grafana/grafana:8.2.6
-docker pull grafana/grafana-oss:8.2.6
-docker image inspect grafana/grafana-oss:8.2.6
+docker pull grafana/grafana-oss:9.2.15
+docker image inspect grafana/grafana-oss:9.2.15
 
 
 cd /mnt/c/virtualization/mediastack/ep45-windows-server-2022
 docker compose -f docker-compose.yml up -d 
 # docker compose -f docker-compose.yml down
+
+# cd /mnt/c/virtualization/mediastack/ep42-sql-server
+
 # docker compose -f docker-compose-grafana.yml up -d 
 # docker compose -f docker-compose-grafana.yml down
 # docker compose -f docker-compose-grafana1.yml up -d 
