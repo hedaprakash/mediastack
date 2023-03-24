@@ -111,13 +111,19 @@ wsl
 #wsl -d Ubuntu-22.04
 # check OS
 lsb_release -a
+#Update 
+sudo apt update
+sudo apt list --upgradable
+
+sudo apt-get update && sudo apt-get upgrade -y
+
 sudo service docker start
 
 docker ps -a
 docker network create mynetwork
 docker images --all
 #docker images grafana/grafana
-#docker image rm  grafana/grafana-oss:8.3.0-beta2
+#docker image rm  grafana/grafana-oss
 #docker images   grafana/grafana-oss
 #docker image inspect grafana/grafana-oss
 
@@ -140,7 +146,7 @@ docker compose -f docker-compose.yml up -d
 # docker compose -f docker-compose.yml down
 
 # cd /mnt/c/virtualization/mediastack/ep42-sql-server
-
+# docker compose -f docker-compose.yml up -d 
 # docker compose -f docker-compose-grafana.yml up -d 
 # docker compose -f docker-compose-grafana.yml down
 # docker compose -f docker-compose-grafana1.yml up -d 
