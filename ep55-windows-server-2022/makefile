@@ -9,10 +9,10 @@ gci
 # git pull origin main
 # gci ep43-grafana
 #configure git
-git config  --global user.email “prakash@starinnovative.com”
+git config  --global user.email "prakash@starinnovative.com"
 
-git config --global  user.name “Prakash Heda”
-git config --global -–list
+git config --global  user.name "Prakash Heda"
+git config --global --list
 
 #Agenda
 #1. setup host names for quick remote commands execution
@@ -94,11 +94,10 @@ exit
 # Visit the adminer Web Interface `http://10.10.50.233:10000/`, and login with database 
 # Visit the pgadmin4 Web Interface `http://10.10.50.233:5050/`, and login with database 
 
-ssh proxmox "qm listsnapshot 789"
-ssh proxmox "qm snapshot 789 post-postgres"
-ssh proxmox "qm delsnapshot 789 pre-postgres" 
-ssh proxmox "qm delsnapshot 789 post-grafana-sql"
-# ssh proxmox "qm start 789"
+wsl 
+wsl --install -d Ubuntu-22.04
+
+wsl --set-version Ubuntu-22.04
 
 docker ps -a
 docker network create mynetwork
