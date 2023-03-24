@@ -94,12 +94,16 @@ exit
 # Visit the adminer Web Interface `http://10.10.50.233:10000/`, and login with database 
 # Visit the pgadmin4 Web Interface `http://10.10.50.233:5050/`, and login with database 
 
+wsl --install
+
+Restart-Computer -force 
+
 wsl 
 wsl --install -d Ubuntu-22.04
 
 wsl --list --verbose
 wsl --list --all
-wsl --set-version Ubuntu-22.04 2
+#wsl --set-version Ubuntu-22.04 2
 wsl --set-default-version 2
 wsl --set-default Ubuntu-22.04
 wsl --list --all
@@ -111,15 +115,44 @@ sudo service docker start
 
 docker ps -a
 docker network create mynetwork
-docker images
+docker images --all
+docker images grafana/grafana
+docker image rm  grafana/grafana-oss
+docker images   grafana/grafana-oss
+
+docker image history mcr.microsoft.com/mssql/server:2022-latest
+docker image inspect mcr.microsoft.com/mssql/server:2022-latest
+docker image inspect grafana/grafana:8.3.0-beta2
+docker pull grafana/grafana:8.3.0-beta2
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
+docker ps -a 
 docker pull postgres:latest
 docker pull adminer:latest
 docker pull dpage/pgadmin4:latest
 docker pull mcr.microsoft.com/mssql/server:2022-latest
-docker pull grafana/grafana-oss:latest
+docker pull grafana/grafana:8.2.6
+docker pull grafana/grafana-oss:8.2.6
+docker image inspect grafana/grafana-oss:8.2.6
 
-cd /mnt/c/virtualization/mediastack/ep44-PostgreSQL
+
+cd /mnt/c/virtualization/mediastack/ep45-windows-server-2022
 docker compose -f docker-compose.yml up -d 
-# docker compose -f ~/sql-server/docker-compose.yml down 
+# docker compose -f docker-compose.yml down
+# docker compose -f docker-compose-grafana.yml up -d 
+# docker compose -f docker-compose-grafana.yml down
+# docker compose -f docker-compose-grafana1.yml up -d 
+# docker compose -f docker-compose-grafana1.yml down
 docker logs sql1
 
+docker exec -t sql1 cat /var/opt/mssql/log/errorlog | grep connection
+
+sudo docker exec -it sql1 "bash"
+
+/opt/mssql-tools/bin/sqlcmd -S localhost  -W -h-1 -U SA -P "Password1Test#"  -Q "SELECT @@SERVERNAME as Host,
+    SERVERPROPERTY('ComputerNamePhysicalNetBIOS') as ComputerNamePhysicalNetBIOS,
+    SERVERPROPERTY('MachineName') as MachineName,
+    SERVERPROPERTY('ServerName') as ServerName;
+"
+
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Password1Test#"  -Q "create database testdb"
+exit
