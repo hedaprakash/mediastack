@@ -97,7 +97,17 @@ exit
 wsl 
 wsl --install -d Ubuntu-22.04
 
-wsl --set-version Ubuntu-22.04
+wsl --list --verbose
+wsl --list --all
+wsl --set-version Ubuntu-22.04 2
+wsl --set-default-version 2
+wsl --set-default Ubuntu-22.04
+wsl --list --all
+wsl
+#wsl -d Ubuntu-22.04
+# check OS
+lsb_release -a
+sudo service docker start
 
 docker ps -a
 docker network create mynetwork
