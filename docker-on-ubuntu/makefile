@@ -1,6 +1,8 @@
 ssh hvadmin@10.10.50.232
 # wsl
 #Update 
+# One line docker install
+# curl -fsSL get.docker.com | bash
 sudo apt update
 sudo apt list --upgradable
 
