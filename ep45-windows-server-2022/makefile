@@ -133,16 +133,7 @@ lsb_release -a
 sudo apt update
 sudo apt list --upgradable
 
-sudo apt install docker.io -y
-sudo visudo
-https://blog.nillsf.com/index.php/2020/06/29/how-to-automatically-start-the-docker-daemon-on-wsl2/
-
-curl -fsSL get.docker.com | bash
-sudo usermod -aG docker $USER
-su - $USER
-sudo apt install telnetd -y
-#reboot is must
-sudo reboot
+sudo apt-get update && sudo apt-get upgrade -y
 
 wsl
 sudo service docker start
