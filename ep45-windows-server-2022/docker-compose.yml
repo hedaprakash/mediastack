@@ -16,7 +16,7 @@ services:
     restart: "unless-stopped"
 
   sql:
-      image: "mcr.microsoft.com/mssql/server:2022-latest"
+      image: "mcr.microsoft.com/mssql/server:2019-latest"
       container_name: sql1
       hostname: sql1
       ports:
