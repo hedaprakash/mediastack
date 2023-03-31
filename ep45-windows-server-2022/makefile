@@ -11,7 +11,6 @@ gci
 # gci ep43-grafana
 #configure git
 git config  --global user.email "prakash@starinnovative.com"
-
 git config --global  user.name "Prakash Heda"
 git config --global --list
 
@@ -116,6 +115,13 @@ lsb_release -a
 sudo apt update
 sudo apt list --upgradable
 
+curl -fsSL get.docker.com | bash
+sudo usermod -aG docker $USER
+su - $USER
+#reboot is must
+sudo reboot
+
+wsl
 sudo apt-get update && sudo apt-get upgrade -y
 
 sudo service docker start
@@ -128,11 +134,12 @@ docker images --all
 #docker images   grafana/grafana-oss
 #docker image inspect grafana/grafana-oss
 
-docker image history mcr.microsoft.com/mssql/server:2022-latest
-docker image inspect mcr.microsoft.com/mssql/server:2022-latest
-docker image inspect grafana/grafana-oss:9.2.15
-docker pull grafana/grafana:8.3.0-beta2
-docker run -d --name=grafana -p 3000:3000 grafana/grafana
+# docker image history mcr.microsoft.com/mssql/server:2022-latest
+# docker image inspect mcr.microsoft.com/mssql/server:2022-latest
+# docker image inspect grafana/grafana-oss:9.2.15
+# docker pull grafana/grafana:8.3.0-beta2
+# docker run -d --name=grafana -p 3000:3000 grafana/grafana
+
 docker ps -a 
 docker pull postgres:latest
 docker pull adminer:latest
