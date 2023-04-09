@@ -1,5 +1,6 @@
 ls
 # New clone if you are starting
+mkdir c:\virtualization
 cd c:\virtualization
 git clone https://github.com/hedaprakash/mediastack.git
 cd mediastack

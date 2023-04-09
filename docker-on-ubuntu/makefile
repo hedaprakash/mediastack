@@ -1,5 +1,13 @@
 ssh hvadmin@10.10.50.232
-# wsl
+
+
+
+sudo apt install docker.io
+sudo apt-get install  docker-compose-plugin
+# uninstall
+snap remove docker
+rm -R /var/lib/docker
+sudo apt-get remove docker docker-engine docker.io
 #Update 
 # One line docker install
 # curl -fsSL get.docker.com | bash
@@ -31,7 +39,8 @@ sudo apt-get update
 
 
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
 
 docker --version
 
@@ -48,4 +57,3 @@ ssh hvadmin@10.10.50.232
 
 docker run hello-world
 
-# sudo service docker start

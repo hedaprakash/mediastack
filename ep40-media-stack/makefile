@@ -39,29 +39,40 @@ ssh hvadmin@10.10.50.232 "cat  ~/media-stack/docker-compose.yml"
 
 
 ssh hvadmin@10.10.50.232
-ls  /nfsdocker
-sudo mkdir -p /nfsdocker/transmission/config
-sudo mkdir -p /tordown/transmission
-sudo mkdir -p /nfsdocker/transmission
-sudo mkdir -p /nfsdocker/radarr/config
-sudo mkdir -p /movies/newmovdown
-sudo mkdir -p /nfsdocker/sonarr/config
-sudo mkdir -p /tvshows/newtvdown
-sudo mkdir -p /nfsdocker/jackett/config
-sudo mkdir -p /nfsdocker/jackett/blackhole
-sudo mkdir -p /nfsdocker/jellyfin/config
+sudo rm -rf /nfsdocker
+sudo rm -rf /movies
+sudo rm -rf /tordown
+sudo rm -rf /tvshows
 
-sudo chown 1000 /movies/newmovdown
-sudo chown :1000 /movies/newmovdown
-sudo chown 1000 /tvshows/newtvdown
-sudo chown :1000 /tvshows/newtvdown
-
+sudo mkdir /nfsdocker
+sudo mkdir /movies
+sudo mkdir /tordown
+sudo mkdir /tvshows
+sudo chown 1000:1000 /nfsdocker
+sudo chown 1000:1000 /movies
+sudo chown 1000:1000 /tordown
+sudo chown 1000:1000 /tvshows
+#validate owner
+ls -l  /
+ls -l  /nfsdocker
+sudo -uhvadmin mkdir -p /nfsdocker/transmission/config
+sudo -uhvadmin mkdir -p /tordown/transmission
+sudo -uhvadmin mkdir -p /nfsdocker/transmission
+sudo -uhvadmin mkdir -p /nfsdocker/radarr/config
+sudo -uhvadmin mkdir -p /movies/newmovdown
+sudo -uhvadmin mkdir -p /nfsdocker/sonarr/config
+sudo -uhvadmin mkdir -p /tvshows/newtvdown
+sudo -uhvadmin mkdir -p /nfsdocker/jackett/config
+sudo -uhvadmin mkdir -p /nfsdocker/jackett/blackhole
+sudo -uhvadmin mkdir -p /nfsdocker/jellyfin/config
+ls -l /movies
 
 docker network create mynetwork
 
+ls ~/media-stack/docker-compose.yml
 docker compose -f ~/media-stack/docker-compose.yml up -d 
 docker compose -f ~/media-stack/docker-compose.yml down 
-
+docker compose version
 First time setup summary:
 Jackett: http://10.10.50.232:9117/UI/Dashboard admin Password1Test#
 Transmission: http://10.10.50.232:9091/transmission/web/ hvadmin Password1Test#
