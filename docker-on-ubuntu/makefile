@@ -1,7 +1,7 @@
+# https://docs.docker.com/engine/install/ubuntu/
 ssh hvadmin@10.10.50.232
 
-
-
+# Not recommanded way, unexpetced issues 
 sudo apt install docker.io
 sudo apt-get install  docker-compose-plugin
 # uninstall
@@ -10,7 +10,10 @@ rm -R /var/lib/docker
 sudo apt-get remove docker docker-engine docker.io
 #Update 
 # One line docker install
-# curl -fsSL get.docker.com | bash
+curl -fsSL get.docker.com | bash
+# Above is not a recommanded way, unexpetced issues 
+
+
 sudo apt update
 sudo apt list --upgradable
 
