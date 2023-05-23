@@ -56,7 +56,7 @@ scp -r C:\virtualization\chatgpt\nodejs\.dockerignore nodejs:~/compute_webserver
 ssh nodejs "ls -l ~/compute_webserver"
 
 
-docker build -t mynodejs3 .
+docker build -t mynodejs5 .
 
 # if error 
 npm cache clean --force
