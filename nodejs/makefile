@@ -55,8 +55,16 @@ scp -r -p C:\virtualization\chatgpt\nodejs\* nodejs:~/compute_webserver/
 scp -r C:\virtualization\chatgpt\nodejs\.dockerignore nodejs:~/compute_webserver/
 ssh nodejs "ls -l ~/compute_webserver"
 
+git clone https://github.com/hedaprakash/mediastack.git
+git restore package.json
+git restore .
+git fetch
+
+cat package.json
 
 docker build -t mynodejs5 .
+
+
 
 # if error 
 npm cache clean --force
