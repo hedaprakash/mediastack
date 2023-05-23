@@ -1,0 +1,28 @@
+Hello, Prakash, I'm setting up some time for a more thorough introduction 
+and to talk about what my team is working on along with some of the struggles we're having.
+John mentioned we should speak. 
+
+John suggested that there are area's on SSNC cloud development side where I can help 
+
+moved db team from outsourcing to insourcing, 
+ops support for 300+ clinets, 600+ database servers
+Passionate about leadership, mentoring, people management
+like to streamline processes, 
+figure out solutions to complex problems
+focusing on automation and best practices
+Pioneered change from virtualization to containerization,
+ extensive experience building out innovative solutions to support DevOps deployments 
+Certified: AWS Certified Cloud Practitioner, Azure Fundamentals
+, Microsoft SQL Server
+Enjoy exploring and sharing new technologies 
+using https://www.youtube.com/sqlfeatures and like speaking at database events!
+
+how the reporting will change?  
+
+I like to explore new tech, share it with community and on my blog and youtube 
+
+I am excited to be part of SSNC cloud development program
+
+What are some of the struggles team is having
+whats the expectations going forword?
+

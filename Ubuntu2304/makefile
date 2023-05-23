@@ -29,6 +29,7 @@ sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
 sudo apt-get update
+
 sudo apt-get install \
     ca-certificates \
     curl \
@@ -63,6 +64,7 @@ su - $USER
 #reboot is must
 sudo reboot
 
+sudo shutdown -h now
 
 cat "C:\Users\hvadmin\.ssh\config"
 Host vmcontainer
