@@ -17,7 +17,7 @@ ssh root@10.10.50.101
 # qm rollback 777 post-media-stack
 # qm start 777
 
-ssh hvadmin@10.10.50.232
+ssh udoc
 docker pull ghcr.io/benphelps/homepage:latest
 exit
 
@@ -30,13 +30,17 @@ exit
 
 
 # run it from client machine
-ssh hvadmin@10.10.50.232 "mkdir ~/homepage"
-scp C:\virtualization\mediastack\ep41-homepage-dashboard\docker-compose.yml hvadmin@10.10.50.232:~/homepage
-ssh hvadmin@10.10.50.232 "cat  ~/homepage/docker-compose.yml"
+ssh udoc "mkdir ~/homepage"
+ssh udoc "docker network create mynetwork"
+ssh udoc "pwd"
+# update docker-compose with right path for config /home/pheda/homepage/config
+scp C:\virtualization\mediastack\ep41-homepage-dashboard\docker-compose.yml udoc:~/homepage
+ssh udoc "cat  ~/homepage/docker-compose.yml"
 
-ssh hvadmin@10.10.50.232
+ssh udoc
 sudo mkdir -p /nfsdocker/homepage/config
 docker ps 
+
 docker compose -f ~/homepage/docker-compose.yml up -d 
 docker compose -f ~/homepage/docker-compose.yml down 
 
@@ -49,11 +53,11 @@ cat /nfsdocker/homepage/config/logs/homepage.log
 cat /nfsdocker/homepage/config/bookmarks.yaml
 
 # open another terminal window 
-scp C:\virtualization\mediastack\ep41-homepage-dashboard\config\bookmarks.yaml hvadmin@10.10.50.232:/nfsdocker/homepage/config
+scp C:\virtualization\mediastack\ep41-homepage-dashboard\config\bookmarks.yaml udoc:/nfsdocker/homepage/config
 
-scp C:\virtualization\mediastack\ep41-homepage-dashboard\config\services.yaml hvadmin@10.10.50.232:/nfsdocker/homepage/config
+scp C:\virtualization\mediastack\ep41-homepage-dashboard\config\services.yaml udoc:/nfsdocker/homepage/config
 
-scp C:\virtualization\mediastack\ep41-homepage-dashboard\config\widgets.yaml hvadmin@10.10.50.232:/nfsdocker/homepage/config
+scp C:\virtualization\mediastack\ep41-homepage-dashboard\config\widgets.yaml udoc:/nfsdocker/homepage/config
 
 
 Jackett: http://10.10.50.232:9117/UI/Dashboard admin Password1Test#
