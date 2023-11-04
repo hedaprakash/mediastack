@@ -126,6 +126,13 @@ docker logs sql1
 
 docker exec -t sql1 cat /var/opt/mssql/log/errorlog | grep connection
 
+docker exec -t sql1 ls /var/opt/mssql   
+docker exec -t sql1 ls /var/opt/mssql/log   
+docker exec -t sql1 cat /var/opt/mssql/log/core.sqlservr.11_04_2023_19_22_04.9.txt
+
+
+
+
 sudo docker exec -it sql1 "bash"
 
 /opt/mssql-tools/bin/sqlcmd -S localhost  -W -h-1 -U SA -P "Password1Test#"  -Q "SELECT @@SERVERNAME as Host,
